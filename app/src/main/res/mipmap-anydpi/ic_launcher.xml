@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Non-adaptive fallback. minSdk is 29 so the v26 adaptive icon always wins;
+     this exists only so the resource resolves everywhere. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path
+        android:fillColor="#FFD34E"
+        android:pathData="M0,0 h108 v108 h-108 z" />
+
+    <path
+        android:fillColor="#1F1F1F"
+        android:pathData="M24,40 h60 a6,6 0 0 1 6,6 v26 a6,6 0 0 1 -6,6 h-60 a6,6 0 0 1 -6,-6 v-26 a6,6 0 0 1 6,-6 z" />
+
+    <path
+        android:fillColor="#1F1F1F"
+        android:pathData="M42,40 l4,-8 h16 l4,8 z" />
+
+    <path
+        android:fillColor="#FFD34E"
+        android:pathData="M54,48 m-13,0 a13,13 0 1,0 26,0 a13,13 0 1,0 -26,0" />
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M60,80 l16,0 l0,-6 l12,10 l-12,10 l0,-6 l-16,0 z" />
+
+</vector>

@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.fuckmigallery'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.fuckmigallery"
+        minSdk 29
+        targetSdk 36
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        viewBinding false
+        buildConfig true
+    }
+
+    packaging {
+        resources {
+            excludes += ['META-INF/*.kotlin_module']
+        }
+    }
+}
+
+dependencies {
+    // Xposed API — compile-time stubs only. Must never ship inside the APK:
+    // the framework provides these classes at runtime.
+    compileOnly 'de.robv.android.xposed:api:82'
+
+    // Root shell, to publish the config where the camera process can read it.
+    implementation 'com.github.topjohnwu.libsu:core:5.2.2'
+    implementation 'com.github.topjohnwu.libsu:io:5.2.2'
+
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+}

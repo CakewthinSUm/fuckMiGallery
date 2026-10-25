@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Only the camera is hooked. Nothing else on the device is affected. -->
+    <string-array name="xposed_scope">
+        <item>com.android.camera</item>
+    </string-array>
+</resources>

@@ -1,0 +1,13 @@
+# Gradle
+.gradle/
+build/
+app/build/
+.kotlin/
+
+# Local machine config — contains this machine's SDK path
+local.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store

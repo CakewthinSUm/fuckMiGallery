@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">相机相册重定向</string>
+    <string name="intro">拍照后点左下角缩略图时，打开你选择的相册，而不是小米相册。</string>
+    <string name="xposed_description">相机缩略图重定向到第三方相册</string>
+
+    <string name="label_enable">启用重定向</string>
+    <string name="label_gallery">目标相册</string>
+    <string name="label_gallery_hint">选择相册</string>
+    <string name="label_verbose">详细日志</string>
+    <string name="verbose_hint">排查问题时打开。日志用 tag FuckMiGallery 输出到 logcat。</string>
+
+    <string name="gallery_follow_system">跟随系统（自动选择）</string>
+    <string name="gallery_miui_suffix">（小米相册）</string>
+
+    <string name="status_line">当前目标：%1$s</string>
+    <string name="status_disabled">未启用</string>
+    <string name="status_follow_system">跟随系统</string>
+    <string name="status_same_as_miui">小米相册（不会发生重定向）</string>
+    <string name="status_no_root">⚠ 未能写入配置（需要 root 授权），改动不会生效</string>
+
+    <string name="setup_hint">在 Xposed 管理器里启用本模块，作用域勾选「相机」（com.android.camera），然后强制停止相机或重启手机。改动设置后无需重启，重新点一次缩略图即可生效。</string>
+</resources>

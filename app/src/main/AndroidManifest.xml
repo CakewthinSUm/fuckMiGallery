@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+      Lets the picker enumerate every app that can open an image. Without this,
+      Android 11+ package visibility hides them and the dropdown comes up empty.
+    -->
+    <!--
+      The picker must list every installed gallery. Enumerating them through
+      <queries> proved unreliable: the visibility filter is applied against what each
+      gallery *declares*, and they differ (Google Photos declares a partial "image"
+      type, others declare no scheme at all), so the list came back incomplete and
+      omitted the user's actual default gallery.
+
+      QUERY_ALL_PACKAGES is appropriate here: this is a local utility whose entire
+      job is to let the user pick any installed gallery, and it only reads package
+      metadata — it never launches or inspects anything on its own.
+    -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <application
+        android:name=".ModuleApp"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FuckMiGallery">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Xposed module metadata. Read by LSPosed / Vector to list the module. -->
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true" />
+        <meta-data
+            android:name="xposeddescription"
+            android:value="@string/xposed_description" />
+        <meta-data
+            android:name="xposedminversion"
+            android:value="82" />
+        <meta-data
+            android:name="xposedscope"
+            android:resource="@array/xposed_scope" />
+        <!--
+          No `xposedsharedprefs`: on this framework build it produced a prefs file the
+          hook still could not read, and it silently swallowed this app's own writes.
+          Settings reach the hook through a file published by root instead; see
+          ConfigStore / HookConfig.
+        -->
+
+    </application>
+
+</manifest>
